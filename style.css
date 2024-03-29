@@ -29,11 +29,12 @@ input {
 
 .hero__pizzas {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 600px;
+  padding: 20px;
   margin: auto;
-  gap: 8px;
+  gap: 12px;
 }
 
 h1 {
@@ -43,6 +44,9 @@ h1 {
 }
 
 .alertNull {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: absolute;
   color: whitesmoke;
   background-color: crimson;
@@ -51,6 +55,25 @@ h1 {
   height: 200px;
   color: black;
   border-radius: 20px;
-  top: 20px;
-  left: 730px;
+  top: 200px;
+  left: 750px;
+  text-shadow: 1px 1px 2px black;
+  padding: 2rem;
+}
+
+.container-pizzas {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  color: white;
+}
+
+span {
+  color: crimson;
+  font-size: 1.5rem;
+}
+
+p {
+  font-size: 1.2rem;
+  color: white;
 }

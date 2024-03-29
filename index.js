@@ -2,6 +2,7 @@ const d = document;
 const btnPizzas = d.querySelector(".btn-pizzas");
 const inputPizzas = d.querySelector(".input-pizzas");
 const containerPizzas = d.querySelector(".container-pizzas");
+const popUp = d.getElementById("#popUp");
 
 const pizzas = [
   {
@@ -50,13 +51,40 @@ const pizzas = [
     imagen: "./img/anana.png",
   },
 ];
+
+// Funcion que genera un array simplificado del original pizzas.
 const recorridoArrayIds = pizzas.map((pizza) => {
   let objectNecesario = {
     id: pizza.id,
     nombre: pizza.nombre,
     imagen: pizza.imagen,
+    precio: pizza.precio,
   };
   return objectNecesario;
 });
 
-console.log(recorridoArrayIds);
+// Evento que muestra la pizza segun el id ingresado
+
+btnPizzas.addEventListener("click", (e) => {
+  const idIngresado = parseInt(inputPizzas.value);
+  const recorrido = recorridoArrayIds.filter(
+    (pizza) => pizza.id === idIngresado
+  );
+
+  if (recorrido.length === 0) {
+    popUp.classList.add("alertNull");
+    popUp.innerHTML = ` <p class="errorLens">"El id ingresado no corresponde con una pizza disponible en nuestro local. Favor intentarlo nuevamente"</p>`;
+  } else {
+    popUp.classList.remove("alertNull");
+    popUp.textContent = "";
+    let nombreDeLaPizza = recorrido[0].nombre;
+    let imagenDeLaPizza = recorrido[0].imagen;
+    let precioDeLaPizza = recorrido[0].precio;
+    const printPizzaCard = `
+  <img src='${imagenDeLaPizza}' alt='${nombreDeLaPizza}'>
+  <h2>Tu pizza buscada es:  ${nombreDeLaPizza} </h2>
+  <p>El precio es: $ <span>${precioDeLaPizza}</span></p>
+  `;
+    containerPizzas.innerHTML = printPizzaCard;
+  }
+});
