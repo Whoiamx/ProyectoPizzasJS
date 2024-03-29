@@ -3,6 +3,11 @@ const btnPizzas = d.querySelector(".btn-pizzas");
 const inputPizzas = d.querySelector(".input-pizzas");
 const containerPizzas = d.querySelector(".container-pizzas");
 const popUp = d.getElementById("#popUp");
+const ls = localStorage;
+
+d.addEventListener("DOMContentLoaded", (e) => {
+  storagePizzas();
+});
 
 const pizzas = [
   {
@@ -70,6 +75,7 @@ const validatePizzaId = () => {
   const recorrido = recorridoArrayIds.filter(
     (pizza) => pizza.id === idIngresado
   );
+  ls.setItem("id", idIngresado);
 
   if (recorrido.length === 0) {
     containerPizzas.style.display = "none";
@@ -82,6 +88,9 @@ const validatePizzaId = () => {
     let nombreDeLaPizza = recorrido[0].nombre;
     let imagenDeLaPizza = recorrido[0].imagen;
     let precioDeLaPizza = recorrido[0].precio;
+    ls.setItem("nombrePizza", nombreDeLaPizza);
+    ls.setItem("imagenPizza", imagenDeLaPizza);
+    ls.setItem("precioPizza", precioDeLaPizza);
     const printPizzaCard = `
   <img src='${imagenDeLaPizza}' alt='${nombreDeLaPizza}'>
   <h2>Tu pizza buscada es:  ${nombreDeLaPizza} </h2>
@@ -89,6 +98,20 @@ const validatePizzaId = () => {
   `;
     containerPizzas.innerHTML = printPizzaCard;
   }
+};
+
+// Funcion que manipula el localStorage
+const storagePizzas = () => {
+  const idPizzaLs = parseInt(ls.getItem("id"));
+  const namePizzaLs = ls.getItem("nombrePizza");
+  const pricePizzaLs = parseInt(ls.getItem("precioPizza"));
+  const imgPizzaLS = ls.getItem("imagenPizza");
+  const printPizzaCardLs = `
+  <img src='${imgPizzaLS}' alt='${namePizzaLs}'>
+  <h2>Tu pizza buscada es:  ${namePizzaLs} </h2>
+  <p>El precio es: $ <span>${pricePizzaLs}</span></p>
+  `;
+  containerPizzas.innerHTML = printPizzaCardLs;
 };
 
 // Funcion que valida que el numero ingresado no sea null
