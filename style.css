@@ -1,0 +1,56 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #131415;
+}
+
+button {
+  background-color: crimson;
+  color: white;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+#hero {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  gap: 8px;
+  color: white;
+}
+
+input {
+  width: 400px;
+}
+
+.hero__pizzas {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 600px;
+  margin: auto;
+  gap: 8px;
+}
+
+h1 {
+  color: white;
+  text-align: center;
+  font-weight: 900;
+}
+
+.alertNull {
+  position: absolute;
+  color: whitesmoke;
+  background-color: crimson;
+  border: solid 1px orange;
+  width: 400px;
+  height: 200px;
+  color: black;
+  border-radius: 20px;
+  top: 20px;
+  left: 730px;
+}
