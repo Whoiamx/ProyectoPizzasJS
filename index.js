@@ -72,9 +72,11 @@ const validatePizzaId = () => {
   );
 
   if (recorrido.length === 0) {
+    containerPizzas.style.display = "none";
     popUp.classList.add("alertWrong");
     popUp.innerHTML = ` <p class="errorLens">"El id ingresado no corresponde con una pizza disponible en nuestro local. Favor intentarlo nuevamente"</p>`;
   } else {
+    containerPizzas.style.display = "block";
     popUp.classList.remove("alertWrong");
     popUp.textContent = "";
     let nombreDeLaPizza = recorrido[0].nombre;
@@ -97,6 +99,7 @@ const isNull = () => {
   if (!idIngresado) {
     popUp.classList.add("alertNull");
     popUp.innerHTML = ` <p class="errorLens">" Favor intentarlo nuevamente"</p>`;
+    containerPizzas.style.display = "none";
   } else {
     popUp.classList.remove("alertNull");
     popUp.textContent = "";
@@ -107,5 +110,4 @@ const isNull = () => {
 btnPizzas.addEventListener("click", (e) => {
   validatePizzaId();
   isNull();
-  console.log(inputPizzas.value);
 });
