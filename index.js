@@ -106,12 +106,14 @@ const storagePizzas = () => {
   const namePizzaLs = ls.getItem("nombrePizza");
   const pricePizzaLs = parseInt(ls.getItem("precioPizza"));
   const imgPizzaLS = ls.getItem("imagenPizza");
-  const printPizzaCardLs = `
-  <img src='${imgPizzaLS}' alt='${namePizzaLs}'>
-  <h2>Tu pizza buscada es:  ${namePizzaLs} </h2>
-  <p>El precio es: $ <span>${pricePizzaLs}</span></p>
-  `;
-  containerPizzas.innerHTML = printPizzaCardLs;
+  if (idPizzaLs !== NaN) {
+    const printPizzaCardLs = `
+    <img src='${imgPizzaLS}' alt='${namePizzaLs}'>
+    <h2>Tu pizza buscada es:  ${namePizzaLs} </h2>
+    <p>El precio es: $ <span>${pricePizzaLs}</span></p>
+    `;
+    containerPizzas.innerHTML = printPizzaCardLs;
+  }
 };
 
 // Funcion que valida que el numero ingresado no sea null
