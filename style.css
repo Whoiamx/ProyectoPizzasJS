@@ -43,7 +43,7 @@ h1 {
   font-weight: 900;
 }
 
-.alertNull {
+.alertWrong {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -76,4 +76,22 @@ span {
 p {
   font-size: 1.2rem;
   color: white;
+}
+
+.alertNull {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  color: whitesmoke;
+  background-color: orangered;
+  border: solid 1px orange;
+  width: 400px;
+  height: 200px;
+  color: black;
+  border-radius: 20px;
+  top: 200px;
+  left: 750px;
+  text-shadow: 1px 1px 2px black;
+  padding: 2rem;
 }

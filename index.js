@@ -63,19 +63,19 @@ const recorridoArrayIds = pizzas.map((pizza) => {
   return objectNecesario;
 });
 
-// Evento que muestra la pizza segun el id ingresado
+// Funcion que valida si el id es valido y sino manda mensaje de error
 
-btnPizzas.addEventListener("click", (e) => {
+const validatePizzaId = () => {
   const idIngresado = parseInt(inputPizzas.value);
   const recorrido = recorridoArrayIds.filter(
     (pizza) => pizza.id === idIngresado
   );
 
   if (recorrido.length === 0) {
-    popUp.classList.add("alertNull");
+    popUp.classList.add("alertWrong");
     popUp.innerHTML = ` <p class="errorLens">"El id ingresado no corresponde con una pizza disponible en nuestro local. Favor intentarlo nuevamente"</p>`;
   } else {
-    popUp.classList.remove("alertNull");
+    popUp.classList.remove("alertWrong");
     popUp.textContent = "";
     let nombreDeLaPizza = recorrido[0].nombre;
     let imagenDeLaPizza = recorrido[0].imagen;
@@ -87,4 +87,25 @@ btnPizzas.addEventListener("click", (e) => {
   `;
     containerPizzas.innerHTML = printPizzaCard;
   }
+};
+
+// Funcion que valida que el numero ingresado no sea null
+
+const isNull = () => {
+  const idIngresado = parseInt(inputPizzas.value);
+
+  if (!idIngresado) {
+    popUp.classList.add("alertNull");
+    popUp.innerHTML = ` <p class="errorLens">" Favor intentarlo nuevamente"</p>`;
+  } else {
+    popUp.classList.remove("alertNull");
+    popUp.textContent = "";
+    validatePizzaId();
+  }
+};
+
+btnPizzas.addEventListener("click", (e) => {
+  validatePizzaId();
+  isNull();
+  console.log(inputPizzas.value);
 });
