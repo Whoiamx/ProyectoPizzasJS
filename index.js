@@ -123,7 +123,7 @@ const isNull = () => {
 
   if (!idIngresado) {
     popUp.classList.add("alertNull");
-    popUp.innerHTML = ` <p class="errorLens">" Favor intentarlo nuevamente"</p>`;
+    popUp.innerHTML = ` <p class="errorLens">" Favor intentarlo nuevamente ingresando un id numerico"</p>`;
     containerPizzas.style.display = "none";
   } else {
     popUp.classList.remove("alertNull");
